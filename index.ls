@@ -10,17 +10,6 @@ stop-by = null
 delay = 60000
 audio-remind = null
 audio-end = null
-pad = (num, size) ->
-  (Array(size + 1).join("0") + num).slice(-size)
-
-format-time = (ms) ->
-  if ms < 0 => ms = 0
-  total-sec = Math.floor(ms / 1000)
-  hh = Math.floor(total-sec / 3600)
-  mm = Math.floor((total-sec % 3600) / 60)
-  ss = total-sec % 60
-  yyyy = Math.floor(ms % 1000 * 10)
-  "#{pad(hh, 2)}:#{pad(mm, 2)}:#{pad(ss, 2)}:#{pad(yyyy, 4)}"
 
 new-audio = (file) ->
   node = new Audio!
@@ -45,7 +34,7 @@ adjust = (it,v) ->
   delay := delay + it * 1000
   if it==0 => delay := v * 1000
   if delay <= 0 => delay := 0
-  $ \#timer .text format-time delay
+  $ \#timer .text delay
   resize!
 
 toggle = ->
@@ -74,7 +63,7 @@ reset = ->
   toggle!
   if handler => clearInterval handler
   handler := null
-  $ \#timer .text format-time delay
+  $ \#timer .text delay
   $ \#timer .css \color, \#fff
   resize!
 
@@ -98,7 +87,7 @@ count = ->
     diff = 0
     clearInterval handler
     handler := setInterval ( -> blink!), 500
-  tm.text format-time diff
+  tm.text "#{diff}"
   resize!
 
 run =  ->
@@ -121,7 +110,7 @@ resize = ->
 
 
 window.onload = ->
-  $ \#timer .text format-time delay
+  $ \#timer .text delay
   resize!
   #audio-remind := new-audio \audio/cop-car.mp3
   #audio-end := new-audio \audio/fire-alarm.mp3

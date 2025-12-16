@@ -9,8 +9,6 @@ html, body
   -moz-user-select: moz-none
   -ms-user-select: none
   user-select: none
-  position: relative
-  overflow: hidden
 
 #timer
   width: 100%
@@ -21,36 +19,6 @@ html, body
   text-align: center
   font-weight: 700
   font-family: century gothic
-  position: relative
-
-#plan-title
-  position: absolute
-  top: 60px
-  left: 50%
-  transform: translateX(-50%)
-  color: #d6f0ff
-  font-weight: 700
-  font-size: 28px
-  letter-spacing: 2px
-  text-shadow: 0 0 8px rgba(0, 160, 255, 0.8)
-  pointer-events: none
-  z-index: 2
-
-#kart-run
-  position: absolute
-  left: 0
-  width: 100%
-  bottom: 60px
-  overflow: hidden
-  pointer-events: none
-  z-index: 2
-  .runner
-    display: inline-block
-    white-space: nowrap
-    font-size: 22px
-    color: #ffe066
-    text-shadow: 0 0 6px rgba(255, 128, 0, 0.8)
-    animation: kart-run 8s linear infinite
 
 #hide, #toggle, #reset, #min10, #min60, #add10, #add60, #def10, #def30, #def60, #def180, #def300, #def600, #def900, #def1800
   position: absolute
@@ -109,9 +77,3 @@ html, body
   position: absolute
   top: 10px
   left: 10px
-
-@keyframes kart-run
-  0%
-    transform: translateX(-100%)
-  100%
-    transform: translateX(100%)
